@@ -32,6 +32,7 @@ class SpiderRewards_Referral_Submissions_Table extends WP_List_Table {
 			'friend_info'     => __( 'Friend Info', 'spider-rewards' ),
 			'status'          => __( 'Status', 'spider-rewards' ),
 			'submission_date' => __( 'Submission Date', 'spider-rewards' ),
+			'actions'         => __( 'Actions', 'spider-rewards' ),
 		);
 	}
 
@@ -54,6 +55,8 @@ class SpiderRewards_Referral_Submissions_Table extends WP_List_Table {
 				return $item[ $column_name ];
 			case 'status':
 				return $this->getStatusBadge( $item[ $column_name ] );
+			case 'actions':
+				return $this->column_actions( $item );
 			default:
 				return print_r( $item, true );
 		}
@@ -87,6 +90,27 @@ class SpiderRewards_Referral_Submissions_Table extends WP_List_Table {
 			'rejected' => '<span class="status-badge status-rejected">' . __( 'Rejected', 'spider-rewards' ) . '</span>',
 		);
 		return isset( $badges[ $status ] ) ? $badges[ $status ] : $status;
+	}
+
+	/**
+	 * Column actions
+	 */
+	public function column_actions( $item ) {
+		$edit_link = sprintf(
+			'<a href="#" class="edit-submission" data-id="%d" data-table="referral" title="%s">%s</a>',
+			$item['id'],
+			__( 'Edit this submission', 'spider-rewards' ),
+			__( 'Edit', 'spider-rewards' )
+		);
+
+		$delete_link = sprintf(
+			'<a href="#" class="delete-submission" data-id="%d" data-table="referral" title="%s">%s</a>',
+			$item['id'],
+			__( 'Delete this submission', 'spider-rewards' ),
+			__( 'Delete', 'spider-rewards' )
+		);
+
+		return $edit_link . ' | ' . $delete_link;
 	}
 
 	public function prepare_items() {

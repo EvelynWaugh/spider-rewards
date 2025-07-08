@@ -4,8 +4,7 @@
  * Plugin URI: https://example.com/spider-rewards
  * Description: A complete WordPress plugin for a rewards system with WooCommerce integration.
  * Version: 1.0.0
- * Author: Your Name
- * Author URI: https://example.com
+ * Author: Sp5der
  * Text Domain: spider-rewards
  * Domain Path: /languages
  * Requires at least: 5.0
@@ -46,6 +45,9 @@ class SpiderRewards {
 	 * Constructor
 	 */
 	private function __construct() {
+		// Load required files
+		$this->loadIncludes();
+
 		add_action( 'init', array( $this, 'init' ) );
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
@@ -55,8 +57,6 @@ class SpiderRewards {
 	 * Initialize plugin
 	 */
 	public function init() {
-		// Load required files
-		$this->loadIncludes();
 
 		// Initialize components
 		$this->initializeComponents();
@@ -69,6 +69,7 @@ class SpiderRewards {
 	 * Load required files
 	 */
 	private function loadIncludes() {
+		require_once SPIDER_REWARDS_PLUGIN_DIR . 'includes/functions.php';
 		require_once SPIDER_REWARDS_PLUGIN_DIR . 'includes/class-database-manager.php';
 		require_once SPIDER_REWARDS_PLUGIN_DIR . 'includes/class-admin-menu.php';
 		require_once SPIDER_REWARDS_PLUGIN_DIR . 'includes/class-rest-controller.php';

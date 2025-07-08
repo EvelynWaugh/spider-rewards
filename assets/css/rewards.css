@@ -4,104 +4,181 @@
 
 /* Container */
 .spider-rewards-container {
-    max-width: 1200px;
+    max-width: 768px;
     margin: 0 auto;
     padding: 20px;
-}
-
-/* Rewards Grid */
-.rewards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-bottom: 40px;
 }
 
 /* Reward Cards */
 .reward-card {
     background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #e5e7eb;
+	border-radius: 16px;
+	padding: 40px;
+	margin-bottom: 40px;
+	border: 2px solid #e5e7eb;
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+	transition: all 0.2s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+.reward-card::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: linear-gradient(90deg, #ff4444, #cc3333);
+	border-radius: 0;
+	z-index: 1;
 }
 
 .reward-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+	transform: translateY(-2px);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+	border-color: #d1d5db;
 }
+
+.reward-card:nth-child(even) {
+	background: #fafafa;
+}
+
+
 
 .reward-header {
-    text-align: center;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #e5e7eb;
+	font-size: 24px;
+	font-weight: 800;
+	margin-bottom: 20px;
+	color: #1a1a1a;
 }
 
-.reward-header h3 {
-    color: #1f2937;
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 0 0 10px 0;
+ .rewards-steps {
+	margin-bottom: 30px;
 }
 
-.reward-amount {
-    color: #059669;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0;
+.rewards-steps ol {
+	padding-left: 20px;
+	margin-bottom: 0;
 }
 
-.reward-description {
-    margin-bottom: 25px;
+.rewards-steps li {
+	margin-bottom: 12px;
+	font-size: 16px;
+	color: #374151;
+	line-height: 1.5;
 }
 
-.reward-description p {
-    color: #6b7280;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 0;
+.reward-form {
+	.form-group {
+		margin-bottom: 20px;
+
+		label {
+			display: block;
+			margin-bottom: 8px;
+			font-weight: 600;
+			color: #1a1a1a;
+			font-size: 14px;
+		}
+
+		input,
+		select {
+			width: 100%;
+			padding-inline: 16px;
+			border: 2px solid #e5e7eb;
+			border-radius: 8px;
+			
+			color: #1a1a1a;
+			font-size: 16px;
+			transition: all 0.2s ease;
+		}
+		input:focus,
+		select:focus {
+			outline: none;
+			border-color: #ff4444;
+			box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.1);
+		}
+
+		input:hover,
+		select:hover {
+			border-color: #d1d5db;
+		}
+	}
+
+	/* Submit Button */
+	.submit-btn {
+		background: linear-gradient(135deg, #ff4444, #cc3333);
+		color: white;
+		border: none;
+		padding: 18px 40px;
+		border-radius: 8px;
+		font-size: 16px;
+		font-weight: 700;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		width: 100%;
+		margin-top: 10px;
+		position: relative;
+		z-index: 2;
+	}
+
+	.submit-btn:hover {
+		background: linear-gradient(135deg, #ff5555, #dd4444);
+		transform: translateY(-1px);
+		box-shadow: 0 4px 16px rgba(255, 68, 68, 0.3);
+	}
+
+	.submit-btn:active {
+		transform: translateY(0);
+	}
+
+	.submit-btn:disabled {
+		background: #9ca3af;
+		cursor: not-allowed;
+		transform: none;
+		box-shadow: none;
+	}
+
+	/* Loading State */
+	.submit-btn.loading {
+		position: relative;
+		color: transparent;
+	}
+
+	.submit-btn.loading::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 20px;
+		height: 20px;
+		border: 2px solid transparent;
+		border-top: 2px solid white;
+		border-radius: 50%;
+		animation: spin 1s linear infinite;
+	}
+}
+
+
+
+
+.reward-info {
+	background: #f8f9fa;
+	border: 2px solid #e5e7eb;
+	border-radius: 12px;
+	padding: 20px;
+	margin-top: 30px;
+	font-size: 14px;
+	color: #374151;
+	line-height: 1.6;
+	position: relative;
+	z-index: 2;
 }
 
 /* Forms */
-.reward-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
 
-.form-group label {
-    color: #374151;
-    font-weight: 500;
-    margin-bottom: 5px;
-    font-size: 0.95rem;
-}
-
-.form-group input {
-    padding: 12px 16px;
-    border: 2px solid #e5e7eb;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    background: #ffffff;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-.form-group input.error {
-    border-color: #ef4444;
-    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
-}
 
 .field-error {
     color: #ef4444;
@@ -109,56 +186,7 @@
     margin-top: 5px;
 }
 
-/* Submit Button */
-.submit-btn {
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-    color: white;
-    border: none;
-    padding: 14px 24px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
-}
 
-.submit-btn:hover {
-    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-}
-
-.submit-btn:active {
-    transform: translateY(0);
-}
-
-.submit-btn:disabled {
-    background: #9ca3af;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-}
-
-/* Loading State */
-.submit-btn.loading {
-    position: relative;
-    color: transparent;
-}
-
-.submit-btn.loading::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    border: 2px solid transparent;
-    border-top: 2px solid white;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
 
 @keyframes spin {
     to { transform: translate(-50%, -50%) rotate(360deg); }
@@ -255,18 +283,19 @@
 
 /* Recent Submissions */
 .spider-rewards-recent {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
+ 	background: #fafafa;
+	border-radius: 16px;
+	padding: 40px;
+	margin: 40px 0;
+	border: 2px solid #e5e7eb;
 }
 
 .spider-rewards-recent h3 {
-    color: #1f2937;
-    margin: 0 0 25px 0;
-    font-size: 1.5rem;
-    font-weight: 600;
+	font-size: 24px;
+	font-weight: 800;
+	margin-bottom: 20px;
+	text-align: center;
+	color: #1a1a1a;
 }
 
 .recent-submissions-list {
@@ -276,13 +305,13 @@
 }
 
 .submission-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    background: #f9fafb;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
+	background: #ffffff;
+	padding: 15px;
+	border-radius: 8px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	color: #374151;
+	border: 1px solid #e5e7eb;
 }
 
 .submission-item:hover {
@@ -303,10 +332,7 @@
 }
 
 .submission-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
+
 }
 
 .customer-name {
@@ -336,10 +362,85 @@
     padding: 40px 20px;
 }
 
+
+.rewards-footer {
+	background: #f8f9fa;
+	padding: 40px 0;
+	margin-top: 60px;
+	border-top: 2px solid #e5e7eb;
+	text-align: center;
+}
+
+.rewards-footer-disclaimer {
+	font-size: 12px;
+	color: #6b7280;
+	margin-bottom: 20px;
+	line-height: 1.5;
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.rewards-footer-contact {
+	color: #374151;
+	font-size: 14px;
+}
+
+.rewards-footer-contact a {
+	color: #ff4444;
+	text-decoration: none;
+}
+
+.rewards-footer-contact a:hover {
+	text-decoration: underline;
+}
+
+.rewards-faq-section {
+	background: #ffffff;
+	border-radius: 16px;
+	padding: 40px;
+	margin: 60px 0;
+	border: 2px solid #e5e7eb;
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.rewards-faq-title {
+	font-size: 28px;
+	font-weight: 800;
+	margin-bottom: 30px;
+	text-align: center;
+	color: #1a1a1a;
+}
+
+.rewards-faq-item {
+	margin-bottom: 25px;
+	padding-bottom: 25px;
+	border-bottom: 1px solid #e5e7eb;
+}
+
+.rewards-faq-item:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.rewards-faq-question {
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 10px;
+	color: #1a1a1a;
+}
+
+.rewards-faq-answer {
+	color: #374151;
+	font-size: 16px;
+	line-height: 1.6;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .spider-rewards-container {
-        padding: 15px;
+        padding: 0px;
     }
     
     .rewards-grid {
@@ -365,4 +466,16 @@
     .submission-info {
         align-items: center;
     }
+
+	.spider-rewards-recent {
+			padding: 24px;
+	}
+
+	.reward-header {
+		 font-size: 20px;
+	}
+
+	.rewards-faq-section {
+		padding: 24px;
+	}
 }

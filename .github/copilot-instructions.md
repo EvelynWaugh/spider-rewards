@@ -5,6 +5,7 @@
 - PHP 8.1
 - MySQL 8.4
 - jQuery
+- SweetAlert2 for notifications in admin.
 
 ## Code Approach:
 - MVC architecture.

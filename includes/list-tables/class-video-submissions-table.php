@@ -43,6 +43,7 @@ class SpiderRewards_Video_Submissions_Table extends WP_List_Table {
 			'social_handle'   => __( 'Social Handle', 'spider-rewards' ),
 			'status'          => __( 'Status', 'spider-rewards' ),
 			'submission_date' => __( 'Submission Date', 'spider-rewards' ),
+			'actions'         => __( 'Actions', 'spider-rewards' ),
 		);
 	}
 
@@ -75,6 +76,8 @@ class SpiderRewards_Video_Submissions_Table extends WP_List_Table {
 				return '<a href="' . esc_url( $item[ $column_name ] ) . '" target="_blank">' . __( 'View Video', 'spider-rewards' ) . '</a>';
 			case 'status':
 				return $this->getStatusBadge( $item[ $column_name ] );
+			case 'actions':
+				return $this->column_actions( $item );
 			default:
 				return print_r( $item, true );
 		}
@@ -122,6 +125,27 @@ class SpiderRewards_Video_Submissions_Table extends WP_List_Table {
 		}
 
 		return $status_badge . $this->row_actions( $actions );
+	}
+
+	/**
+	 * Column actions
+	 */
+	public function column_actions( $item ) {
+		$edit_link = sprintf(
+			'<a href="#" class="edit-submission" data-id="%d" data-table="video" title="%s">%s</a>',
+			$item['id'],
+			__( 'Edit this submission', 'spider-rewards' ),
+			__( 'Edit', 'spider-rewards' )
+		);
+
+		$delete_link = sprintf(
+			'<a href="#" class="delete-submission" data-id="%d" data-table="video" title="%s">%s</a>',
+			$item['id'],
+			__( 'Delete this submission', 'spider-rewards' ),
+			__( 'Delete', 'spider-rewards' )
+		);
+
+		return $edit_link . ' | ' . $delete_link;
 	}
 
 	/**

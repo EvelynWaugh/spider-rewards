@@ -38,7 +38,7 @@ class SpiderRewards_Database_Manager {
             customer_email varchar(255) NOT NULL,
             order_number varchar(100) NOT NULL,
             content_link text NOT NULL,
-            social_handle varchar(255) NOT NULL,
+            social_handle varchar(255) DEFAULT NULL,
             status enum('pending', 'approved', 'rejected') DEFAULT 'pending',
             submission_date datetime DEFAULT CURRENT_TIMESTAMP,
             PRIMARY KEY (id),
@@ -90,7 +90,7 @@ class SpiderRewards_Database_Manager {
             id bigint(20) NOT NULL AUTO_INCREMENT,
             customer_name varchar(255) NOT NULL,
             customer_email varchar(255) NOT NULL,
-            social_handle varchar(255) NOT NULL,
+            social_handle varchar(255) DEFAULT NULL,
             content_link text NOT NULL,
             status enum('pending', 'approved', 'rejected') DEFAULT 'pending',
             submission_date datetime DEFAULT CURRENT_TIMESTAMP,
@@ -118,7 +118,7 @@ class SpiderRewards_Database_Manager {
             customer_name varchar(255) NOT NULL,
             customer_email varchar(255) NOT NULL,
             content_link text NOT NULL,
-            social_handle varchar(255) NOT NULL,
+            social_handle varchar(255) DEFAULT NULL,
             status enum('pending', 'approved', 'rejected') DEFAULT 'pending',
             submission_date datetime DEFAULT CURRENT_TIMESTAMP,
             PRIMARY KEY (id),
@@ -150,7 +150,7 @@ class SpiderRewards_Database_Manager {
 		$video_table   = $wpdb->prefix . 'spiderawards_video_submissions';
 		$video_results = $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT customer_name, social_handle, submission_date, 'video' as type 
+				"SELECT customer_name, status, social_handle, submission_date, 'video' as type 
              FROM $video_table 
              WHERE status = 'approved' 
              ORDER BY submission_date DESC 
@@ -163,7 +163,7 @@ class SpiderRewards_Database_Manager {
 		$referral_table   = $wpdb->prefix . 'spiderawards_referral_submissions';
 		$referral_results = $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT customer_name, '' as social_handle, submission_date, 'referral' as type 
+				"SELECT customer_name, '' as social_handle, status, submission_date, 'referral' as type 
              FROM $referral_table 
              WHERE status = 'approved' 
              ORDER BY submission_date DESC 
@@ -176,7 +176,7 @@ class SpiderRewards_Database_Manager {
 		$best_table   = $wpdb->prefix . 'spiderawards_best_submissions';
 		$best_results = $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT customer_name, social_handle, submission_date, 'best_fit' as type 
+				"SELECT customer_name, social_handle, status, submission_date, 'best_fit' as type 
              FROM $best_table 
              WHERE status = 'approved' 
              ORDER BY submission_date DESC 
@@ -189,7 +189,7 @@ class SpiderRewards_Database_Manager {
 		$review_table   = $wpdb->prefix . 'spiderawards_review_submissions';
 		$review_results = $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT customer_name, social_handle, submission_date, 'review' as type 
+				"SELECT customer_name, social_handle, status, submission_date, 'review' as type 
              FROM $review_table 
              WHERE status = 'approved' 
              ORDER BY submission_date DESC 

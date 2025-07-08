@@ -242,13 +242,6 @@ jQuery(document).ready(function($) {
         }
     });
     
-    // Auto-format social handles
-    $('.reward-form input[name="social_handle"]').on('input', function() {
-        let value = $(this).val();
-        if (value && !value.startsWith('@')) {
-            $(this).val('@' + value);
-        }
-    });
     
     // Character limits and formatting
     $('.reward-form input[name="customer_name"]').on('input', function() {
