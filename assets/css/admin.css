@@ -1,0 +1,178 @@
+/**
+ * Spider Rewards Admin Styles
+ */
+
+/* Admin Dashboard */
+.rewards-dashboard {
+    margin-top: 20px;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: #ffffff;
+    border: 1px solid #c3c4c7;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #646970;
+    font-weight: 600;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1d2327;
+    margin: 0;
+}
+
+.dashboard-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.recent-submissions-section {
+    background: #ffffff;
+    border: 1px solid #c3c4c7;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.recent-submissions-section h2 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    color: #1d2327;
+}
+
+.quick-actions {
+    background: #ffffff;
+    border: 1px solid #c3c4c7;
+    border-radius: 8px;
+    padding: 20px;
+    height: fit-content;
+}
+
+.quick-actions h3 {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    color: #1d2327;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.action-buttons .button {
+    text-align: center;
+}
+
+/* Submission Types */
+.submission-type {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.submission-type.video {
+    background: #e0f2fe;
+    color: #0277bd;
+}
+
+.submission-type.referral {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.submission-type.best-fit {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.submission-type.review {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-pending {
+    background: #fff8e1;
+    color: #f57c00;
+}
+
+.status-approved {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.status-rejected {
+    background: #ffebee;
+    color: #c62828;
+}
+
+/* List Table Enhancements */
+.wp-list-table .status-action {
+    text-decoration: none;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    margin-right: 5px;
+}
+
+.wp-list-table .status-action:hover {
+    background: #f0f0f1;
+}
+
+/* Loading States */
+.status-action.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Responsive Admin */
+@media (max-width: 1024px) {
+    .dashboard-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard-stats {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        padding: 15px;
+    }
+    
+    .stat-number {
+        font-size: 24px;
+    }
+}
